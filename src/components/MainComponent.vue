@@ -2,11 +2,11 @@
   <div class="main_section">
     <h1>300 <strong>Pokémons</strong> para você conhecer</h1>
     <form class="form_input">
-      <input type="text" placeholder="Pesquise por pokémon...">
+      <input type="text" placeholder="Pesquise por pokémon..." v-model="search" @input="filterPokemons">
     </form>
     <main class="main_container">
       <PokemonCard
-        v-for="(pokemon, index) in pokemons"
+        v-for="(pokemon, index) in filteredPokemons"
         :key="pokemon.name"
         :name="pokemon.name"
         :imgSrc="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getId(pokemon)}.png`"
@@ -28,7 +28,8 @@ export default {
   },
   data() {
     return {
-      pokemons: []
+      pokemons: [],
+      search: ''
     }
   },
   mounted() {
@@ -42,6 +43,14 @@ export default {
         });
       });
     });
+  },
+
+  computed: {
+    filteredPokemons() {
+      return this.pokemons.filter((item) => {
+        return item.name.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
   },
   methods: {
     getId(pokemon) {
