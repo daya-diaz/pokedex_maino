@@ -3,7 +3,7 @@
     <img src="../assets/pokemon-logo.png" alt="" />
     <nav>
       <ul>
-        <li><a href="#">Pokedéx</a></li>
+        <li><a href="#">Pokédex</a></li>
         <li><a href="https://linkedin.com/in/dayane-santos-melo" target="_blank">LinkedIn</a></li>
         <li><a href="https://github.com/daya-diaz" target="_blank">Github</a></li>
       </ul>
@@ -24,7 +24,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 6rem; 
+  padding-inline: 10rem; 
   padding-block: 1rem;
   width: 100%; 
   filter: drop-shadow(0px 3px 8px #cccccc);

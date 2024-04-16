@@ -34,14 +34,14 @@
   <style scoped>
   .card_container {
     display: flex;
-    
+
     .left_side {
       border-left-color: #F5DB13;
       border-left-style: solid;
       border-left-width: 5px;
       background-color: #F6F7F9;
       padding-top: .5rem;
-      padding-inline: 1rem;
+      padding-inline: .8rem;
       display: flex;
       flex-direction: column;
       gap: .75rem;
