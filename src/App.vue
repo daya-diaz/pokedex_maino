@@ -25,7 +25,7 @@ export default {
 #app {
   background: linear-gradient(
     to bottom right,
-    rgba(225, 255, 255, 1),
+    rgb(231, 254, 254),
     rgba(245, 245, 245, 1)
   )
   no-repeat center center fixed !important;

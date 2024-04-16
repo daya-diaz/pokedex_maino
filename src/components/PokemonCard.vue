@@ -2,74 +2,102 @@
   <div class="card_container">
     <div class="left_side">
       <h2>
-        Pikachu
+        {{ name }}
       </h2>
-      <div class="details_conteiner">
+      <div class="details_container">
         <div>
-        <div>
-          <span>419</span>
-          <p>Ataque</p>
+          <div id="weight">
+            <span>{{ weight }}</span>
+            <p>Peso (hg)</p>
+          </div>
         </div>
-      </div>
-      <div>
         <div>
-          <span>49</span>
-          <p>Defesa</p>
+          <div id="height">
+            <span>{{ height }}</span>
+            <p>Altura (dm)</p>
+          </div>
         </div>
-      </div>
       </div>
     </div>
     <div class="right_side">
-      <img src="../assets/CardBoxImgPikachu.png" alt="" />
+      <img :src="imgSrc" alt="" />
     </div>
   </div>
-  </template>
-  <script>
-  export default {
-    name: 'PokemonCard',
-  }
-  
-  </script>
-  
-  <style scoped>
-  .card_container {
+</template>
+<script>
+export default {
+  name: 'PokemonCard',
+  props: {
+    name: String,
+    weight: Number,
+    height: Number,
+    imgSrc: String
+  },
+}
+
+</script>
+
+<style scoped>
+.card_container {
+  display: flex;
+
+  .left_side {
+    border-left-color: #F5DB13;
+    border-left-style: solid;
+    border-left-width: 5px;
+    background-color: #F6F7F9;
+    justify-content: center;
+    padding-inline: .8rem;
     display: flex;
+    flex-direction: column;
+    gap: .75rem;
 
-    .left_side {
-      border-left-color: #F5DB13;
-      border-left-style: solid;
-      border-left-width: 5px;
-      background-color: #F6F7F9;
-      padding-top: .5rem;
-      padding-inline: .8rem;
+    h2 {
+      width: 140px;
+    }
+
+    .details_container {
       display: flex;
-      flex-direction: column;
-      gap: .75rem;
+      gap: .5rem;
 
-      .details_conteiner {
+      div {
         display: flex;
-        gap: .75rem;
-        div {
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        align-items: center;
+        font-size: 12px;
+        color: #443c00;
+
+        span {
           display: flex;
-          flex-direction: column;
+          align-items: center;
           justify-content: center;
-          gap: 8px;
-  
-          font-size: 12px;
-          color: #4B4B4B;
-          span {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #212121;
-            border: 3px solid #212121;
-            border-radius: 100%;
-            width: 38px;
-            height: 38px;
-            font-size: 1rem;
-          }
+          color: #443c00;
+          border: 3px solid #443c00;
+          border-radius: 100%;
+          width: 38px;
+          height: 38px;
+          font-size: 1rem;
+          background-color: rgba(245, 219, 19, .2);
         }
       }
+      
     }
   }
-  </style>
+
+  .right_side {
+    width: 153px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F5DB13;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+</style>

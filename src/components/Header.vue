@@ -24,7 +24,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 10rem; 
+  padding-inline: 13rem; 
   padding-block: 1rem;
   width: 100%; 
   filter: drop-shadow(0px 3px 8px #cccccc);

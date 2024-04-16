@@ -1,34 +1,56 @@
 <template>
   <div class="main_section">
-    <h1>800 <strong>Pokémons</strong> para você conhecer</h1>
+    <h1>300 <strong>Pokémons</strong> para você conhecer</h1>
     <form class="form_input">
       <input type="text" placeholder="Pesquise por pokémon...">
     </form>
     <main class="main_container">
-      <PokemonCard />
-      <PokemonCard />
-      <PokemonCard />
-      <PokemonCard />
-      <PokemonCard />
-      <PokemonCard />
-      <PokemonCard />
-      <PokemonCard />
-      <PokemonCard />
-      <PokemonCard />
-      <PokemonCard />
+      <PokemonCard
+        v-for="(pokemon, index) in pokemons"
+        :key="pokemon.name"
+        :name="pokemon.name"
+        :imgSrc="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getId(pokemon)}.png`"
+        :weight="pokemon.weight"
+        :height="pokemon.height"
+      />
     </main>
   </div>
 </template>
+
 <script>
-import PokemonCard from './PokemonCard.vue'
+import axios from 'axios';
+import PokemonCard from './PokemonCard.vue';
 
 export default {
   name: 'MainComponent',
   components: {
     PokemonCard
+  },
+  data() {
+    return {
+      pokemons: []
+    }
+  },
+  mounted() {
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=20").then((response) => {
+      this.pokemons = response.data.results;
+
+      this.pokemons.forEach(pokemon => {
+        axios.get(pokemon.url).then(res => {
+          pokemon.weight = res.data.weight;
+          pokemon.height = res.data.height;
+        });
+      });
+    });
+  },
+  methods: {
+    getId(pokemon) {
+      return Number(pokemon.url.split("/")[6]); 
+    }
   }
 }
 </script>
+
 <style>
 .main_section {
   display: flex;
@@ -36,7 +58,7 @@ export default {
   align-items: center;
   gap: 3rem;
 
-  padding: 3rem 10rem; 
+  padding: 3rem 13rem; 
 
   h1 {
     font-weight: 400;
