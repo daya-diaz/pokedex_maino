@@ -1,16 +1,19 @@
 <template>
   <v-app>
     <Header></Header>
+    <PokemonCard />
   </v-app>
 </template>
 
 <script>
 import Header from './components/Header.vue';
+import PokemonCard from './components/PokemonCard.vue';
 
 export default {
   name: "App",
   components: {
     Header,
+    PokemonCard
   },
   data: () => ({
     //
