@@ -1,5 +1,5 @@
 <template>
-  <div class="card_container">
+  <button class="card_container">
     <div class="left_side">
       <h2>
         {{ name }}
@@ -22,7 +22,7 @@
     <div class="right_side">
       <img :src="imgSrc" alt="" />
     </div>
-  </div>
+  </button>
 </template>
 <script>
 export default {
@@ -40,17 +40,27 @@ export default {
 <style scoped>
 .card_container {
   display: flex;
+  background-color: #F6F7F9;
+  transition: all 300ms ease-out;
+  &:hover {
+    background-color: rgba(245, 219, 19, .2)
+  };
+
+  cursor: pointer;
+  height: 153px;
+  border: none;
 
   .left_side {
     border-left-color: #F5DB13;
     border-left-style: solid;
     border-left-width: 5px;
-    background-color: #F6F7F9;
+    
     justify-content: center;
     padding-inline: .8rem;
     display: flex;
     flex-direction: column;
     gap: .75rem;
+    height: 100%;
 
     h2 {
       width: 140px;
@@ -79,7 +89,7 @@ export default {
           width: 38px;
           height: 38px;
           font-size: 1rem;
-          background-color: rgba(245, 219, 19, .2);
+          background-color: rgba(245, 219, 19, .3);
         }
       }
       
@@ -94,10 +104,24 @@ export default {
     background: #F5DB13;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
+ 
 
     img {
       width: 100%;
+      animation: floating 3s infinite alternate;
     }
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Define o movimento para cima */
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 </style>

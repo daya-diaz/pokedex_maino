@@ -23,6 +23,7 @@ export default {
 
 <style>
 #app {
+  -webkit-font-smoothing: antialiased;
   background: linear-gradient(
     to bottom right,
     rgb(231, 254, 254),

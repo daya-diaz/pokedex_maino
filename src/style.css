@@ -4,6 +4,6 @@
   box-sizing: border-box;
 }
 
-body, html, input, textarea {
+body, html, input, textarea, button {
   font-family: 'Karla', sans-serif;
 }
