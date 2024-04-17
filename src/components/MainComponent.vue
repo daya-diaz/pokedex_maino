@@ -5,14 +5,17 @@
       <input type="text" placeholder="Pesquise por pokémon..." v-model="search" @input="filterPokemons">
     </form>
     <main class="main_container">
-      <PokemonCard
+      <!-- <PokemonCard
         v-for="(pokemon, index) in filteredPokemons"
         :key="pokemon.name"
         :name="pokemon.name"
         :imgSrc="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getId(pokemon)}.png`"
         :weight="pokemon.weight"
         :height="pokemon.height"
-      />
+      /> -->
+
+      <PokemonPopup />
+      
     </main>
   </div>
 </template>
@@ -20,11 +23,13 @@
 <script>
 import axios from 'axios';
 import PokemonCard from './PokemonCard.vue';
+import PokemonPopup from './PokemonPopup.vue';
 
 export default {
   name: 'MainComponent',
   components: {
-    PokemonCard
+    PokemonCard,
+    PokemonPopup
   },
   data() {
     return {
@@ -56,7 +61,7 @@ export default {
     getId(pokemon) {
       return Number(pokemon.url.split("/")[6]); 
     }
-  }
+  },
 }
 </script>
 
