@@ -1,5 +1,5 @@
 <template>
-  <button class="card_container">
+  <button class="card_container" @click="() => console.log(id)">
     <div class="left_side">
       <h2>
         {{ name }}
@@ -25,14 +25,25 @@
   </button>
 </template>
 <script>
+import PokemonPopup from './PokemonPopup.vue';
+
 export default {
   name: 'PokemonCard',
+  components: {
+    PokemonPopup
+  },
   props: {
     name: String,
     weight: Number,
     height: Number,
-    imgSrc: String
+    imgSrc: String,
+    id: Number
   },
+  data() {
+    return {
+      isVisible: Boolean
+    }
+  }
 }
 
 </script>

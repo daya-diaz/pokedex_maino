@@ -24,6 +24,7 @@ export default {
   border-radius: 6px;
   gap: 6px;
 
+
   span {
     font-size: 1rem; 
     color: black;
@@ -31,9 +32,10 @@ export default {
     font-weight: 500;
   }
 
-  #details-content {
+  .details-content {
     display: flex;
     gap: 24px;
+    flex-wrap: wrap;
 
     p {
       color: #4E4E4E;
@@ -42,7 +44,7 @@ export default {
         content: '';
         width: 6px;
         height: 6px;
-        background-color: #F5DB13; /* Corrigindo a propriedade de cor para background-color */
+        background-color: #F5DB13;
         border-radius: 50%;
         position: absolute;
         top: 40%; 
@@ -51,6 +53,11 @@ export default {
 
     }
     
+  }
+  #sprites-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
 </style>

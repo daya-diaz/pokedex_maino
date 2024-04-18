@@ -5,17 +5,35 @@
       <input type="text" placeholder="Pesquise por pokémon..." v-model="search" @input="filterPokemons">
     </form>
     <main class="main_container">
-      <!-- <PokemonCard
-        v-for="(pokemon, index) in filteredPokemons"
-        :key="pokemon.name"
-        :name="pokemon.name"
-        :imgSrc="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getId(pokemon)}.png`"
-        :weight="pokemon.weight"
-        :height="pokemon.height"
-      /> -->
+      <button class="card_container" v-for="(pokemon, index) in filteredPokemons" @click="sendInfo(pokemon)">
+        <div class="left_side">
+          <h2>
+            {{ pokemon.name }}
+          </h2>
+          <div class="details_container">
+            <div>
+              <div id="weight">
+                <span>{{ pokemon.weight }}</span>
+                <p>Peso (hg)</p>
+              </div>
+            </div>
+            <div>
+              <div id="height">
+                <span>{{ pokemon.height }}</span>
+                <p>Altura (dm)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right_side">
+          <img :src="pokemon.imgSrc" alt="" />
+        </div>
+      </button>
 
-      <PokemonPopup />
-      
+      <div v-if="showModal" @click="showModal = false">
+        <PokemonPopup :pokemon_info="selected_pokemon"></PokemonPopup>
+      </div>
+
     </main>
   </div>
 </template>
@@ -34,7 +52,9 @@ export default {
   data() {
     return {
       pokemons: [],
-      search: ''
+      search: '',
+      selected_pokemon: [],
+      showModal: false
     }
   },
   mounted() {
@@ -43,8 +63,20 @@ export default {
 
       this.pokemons.forEach(pokemon => {
         axios.get(pokemon.url).then(res => {
+          pokemon.id = res.data.id;
           pokemon.weight = res.data.weight;
           pokemon.height = res.data.height;
+          pokemon.imgSrc = res.data.sprites.front_default;
+          pokemon.abilities = res.data.abilities;
+          pokemon.sprites = res.data.sprites;
+          pokemon.gameIndices = res.data.game_indices;
+          pokemon.attacks = res.data.moves.map(move => {
+            return {
+              name: move.move.name,
+            };
+          });
+
+
         });
       });
     });
@@ -59,7 +91,11 @@ export default {
   },
   methods: {
     getId(pokemon) {
-      return Number(pokemon.url.split("/")[6]); 
+      return Number(pokemon.url.split("/")[6]);
+    },
+    sendInfo(pokemon_info) {
+      this.selected_pokemon = pokemon_info;
+      this.showModal = true;
     }
   },
 }
@@ -72,7 +108,7 @@ export default {
   align-items: center;
   gap: 3rem;
 
-  padding: 3rem 13rem; 
+  padding: 3rem 13rem;
 
   h1 {
     font-weight: 400;
@@ -84,6 +120,7 @@ export default {
 
   form {
     width: 100%;
+
     input {
       height: 3.3rem;
       width: 100%;
@@ -110,6 +147,84 @@ export default {
     gap: 4rem;
     row-gap: 2rem;
 
+
+    .card_container {
+      display: flex;
+      background-color: #F6F7F9;
+      transition: all 300ms ease-out;
+
+      &:hover {
+        background-color: rgba(245, 219, 19, .2)
+      }
+
+      ;
+
+      cursor: pointer;
+      height: 153px;
+      border: none;
+
+      .left_side {
+        border-left-color: #F5DB13;
+        border-left-style: solid;
+        border-left-width: 5px;
+
+        justify-content: center;
+        padding-inline: .8rem;
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+        height: 100%;
+
+        h2 {
+          width: 140px;
+        }
+
+        .details_container {
+          display: flex;
+          gap: .5rem;
+
+          div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+            align-items: center;
+            font-size: 12px;
+            color: #443c00;
+
+            span {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #443c00;
+              border: 3px solid #443c00;
+              border-radius: 100%;
+              width: 38px;
+              height: 38px;
+              font-size: 1rem;
+              background-color: rgba(245, 219, 19, .3);
+            }
+          }
+
+        }
+      }
+
+      .right_side {
+        width: 153px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #F5DB13;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+
+
+        img {
+          width: 100%;
+          animation: floating 3s infinite alternate;
+        }
+      }
+    }
   }
 }
 </style>

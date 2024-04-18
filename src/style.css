@@ -7,3 +7,26 @@
 body, html, input, textarea, button {
   font-family: 'Karla', sans-serif;
 }
+
+
+/* Estilização da barra de rolagem para navegadores WebKit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 8px; /* Largura da barra de rolagem */
+  height: 8px; /* Altura da barra de rolagem */
+}
+
+/* Estilização do trilho da barra de rolagem */
+::-webkit-scrollbar-track {
+  background: transparent; /* Cor do trilho */
+}
+
+/* Estilização do indicador da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background: #F5DB13; /* Cor do indicador */
+  border-radius: 4px; /* Borda arredondada */
+}
+
+/* Estilização do indicador da barra de rolagem ao passar o mouse sobre ele */
+::-webkit-scrollbar-thumb:hover {
+  background: #ab9700; /* Cor do indicador ao passar o mouse */
+}

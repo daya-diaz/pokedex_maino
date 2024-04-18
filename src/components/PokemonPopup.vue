@@ -1,17 +1,38 @@
 <template>
   <div class="popup-container">
     <div class="left-side">
-      <img src="../assets/pokemonPopup.png" alt="">
+      <img :src="pokemon_info.imgSrc" alt="">
     </div>
     <div class="right-side">
-      <h2>Charzard</h2>
+      <h2>{{ pokemon_info.name }}</h2>
       <DetailsPokemons title="Habilidades">
-        <div id="details-content">
-          <p>Overgrow</p>
-          <p>Chlorophyll</p>
+        <div class="details-content">
+          <p v-for="(hab, index) in pokemon_info.abilities" :key="index">{{ hab.ability.name }}</p>
         </div>
       </DetailsPokemons>
-      
+
+      <DetailsPokemons title="Sprites">
+        <div id="sprites-content">
+          <div v-for="(sprite, index) in pokemon_info.sprites" :key="index">
+            <img :src="sprite" alt="">
+          </div>
+        </div>
+      </DetailsPokemons>
+
+      <DetailsPokemons title="Game índices">
+        <div class="details-content">
+          <p v-for="(gameIndexPokemon, index) in pokemon_info.gameIndices" :key="index">
+          {{ gameIndexPokemon.version.name }}</p>
+        </div>
+      </DetailsPokemons>
+
+      <DetailsPokemons title="Ataques">
+        <div class="details-content">
+          <p v-for="(move, index) in pokemon_info.attacks" :key="index">
+          {{ move.name}}
+          </p>
+        </div>
+      </DetailsPokemons>
     </div>
   </div>
 </template>
@@ -20,13 +41,23 @@ import DetailsPokemons from './DetailsPokemons.vue';
 
 export default {
   name: 'PokemonPopup',
+  props: {
+    pokemon_info: []
+  },
   components: {
     DetailsPokemons
-  }
+  },
 }
 </script>
 <style>
 .popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   height: 100%;
   .left-side {
@@ -48,7 +79,8 @@ export default {
 
   .right-side {
     height: 320px;
-    overflow-y: scroll;
+    overflow: auto;
+
 
     display: flex;
     flex-direction: column;
