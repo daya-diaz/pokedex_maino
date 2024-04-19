@@ -5,13 +5,13 @@
     </div>
     <div class="right-side">
       <h2>{{ pokemon_info.name }}</h2>
-      <DetailsPokemons title="Habilidades">
+      <DetailsPokemons :title="$t('popup.abilitys')">
         <div class="details-content">
           <p v-for="(hab, index) in pokemon_info.abilities" :key="index">{{ hab.ability.name }}</p>
         </div>
       </DetailsPokemons>
 
-      <DetailsPokemons title="Sprites">
+      <DetailsPokemons :title="$t('popup.sprites')">
         <div id="sprites-content">
           <div v-for="(sprite, index) in pokemon_info.sprites" :key="index">
             <img :src="sprite" alt="">
@@ -19,14 +19,14 @@
         </div>
       </DetailsPokemons>
 
-      <DetailsPokemons title="Game índices">
+      <DetailsPokemons :title="$t('popup.gameIndices')">
         <div class="details-content">
           <p v-for="(gameIndexPokemon, index) in pokemon_info.gameIndices" :key="index">
           {{ gameIndexPokemon.version.name }}</p>
         </div>
       </DetailsPokemons>
 
-      <DetailsPokemons title="Moves">
+      <DetailsPokemons :title="$t('popup.moves')">
         <div class="details-content">
           <p v-for="move in pokemon_info.attacks" :key="move.name">
           {{ move.name }}

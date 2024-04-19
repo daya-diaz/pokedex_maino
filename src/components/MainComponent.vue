@@ -1,8 +1,8 @@
 <template>
   <div class="main_section">
-    <h1>300 <strong>Pokémons</strong> para você conhecer</h1>
+    <h1>{{ $t('home.title') }}</h1>
     <form class="form_input">
-      <input type="text" placeholder="Pesquise por pokémon..." v-model="search" @input="filterPokemons">
+      <input type="text" :placeholder="$t('home.searchPlaceholder')"  v-model="search" @input="filterPokemons">
     </form>
     <main class="main_container">
       <button class="card_container" v-for="(pokemon, index) in filteredPokemons" @click="sendInfo(pokemon)">
@@ -14,13 +14,13 @@
             <div>
               <div id="weight">
                 <span>{{ pokemon.weight }}</span>
-                <p>Peso (hg)</p>
+                <p>{{ $t('card.weight') }}</p>
               </div>
             </div>
             <div>
               <div id="height">
                 <span>{{ pokemon.height }}</span>
-                <p>Altura (dm)</p>
+                <p>{{ $t('card.height') }}</p>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default {
   padding: 3rem 13rem;
 
   h1 {
-    font-weight: 400;
+    font-weight: 500;
     width: 100%;
     color: #000;
     text-align: center;
