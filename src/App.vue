@@ -23,6 +23,8 @@ export default {
 
 <style>
 #app {
+  position: relative;
+
   -webkit-font-smoothing: antialiased;
   background: linear-gradient(
     to bottom right,

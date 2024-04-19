@@ -29,11 +29,9 @@
           <img :src="pokemon.imgSrc" alt="" />
         </div>
       </button>
-
-      <div v-if="showModal" @click="showModal = false">
+      <div class="popup_div_container" v-if="showModal" @click="closePopup">
         <PokemonPopup :pokemon_info="selected_pokemon"></PokemonPopup>
       </div>
-
     </main>
   </div>
 </template>
@@ -54,7 +52,7 @@ export default {
       pokemons: [],
       search: '',
       selected_pokemon: [],
-      showModal: false
+      showModal: false,
     }
   },
   mounted() {
@@ -73,10 +71,12 @@ export default {
           pokemon.attacks = res.data.moves.map(move => {
             return {
               name: move.move.name,
+              level_learned: move.version_group_details.map((level) => level.level_learned_at)
+
+
             };
           });
-
-
+          {{console.log(res.data.moves)}}
         });
       });
     });
@@ -96,9 +96,16 @@ export default {
     sendInfo(pokemon_info) {
       this.selected_pokemon = pokemon_info;
       this.showModal = true;
+      document.body.style.overflow = "hidden";
+    },
+    closePopup() {
+      this.showModal = false;
+      document.body.style.overflow = "scroll";
     }
   },
 }
+
+
 </script>
 
 <style>
@@ -151,10 +158,10 @@ export default {
     .card_container {
       display: flex;
       background-color: #F6F7F9;
-      transition: all 300ms ease-out;
+      transition: all 300ms ease-in-out;
 
       &:hover {
-        background-color: rgba(245, 219, 19, .2)
+        background-color: rgba(245, 219, 19, .3);
       }
 
       ;
@@ -218,12 +225,23 @@ export default {
         border-top-right-radius: 12px;
         border-bottom-right-radius: 12px;
 
-
         img {
           width: 100%;
           animation: floating 3s infinite alternate;
         }
       }
+    }
+    .card_container:hover .right_side img {
+      transform: scale(1.2);
+      transition: all 300ms ease-in-out;
+    }
+    .popup_div_container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.3);
+      position: fixed;
+      top: 0;
     }
   }
 }

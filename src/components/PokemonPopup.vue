@@ -26,10 +26,11 @@
         </div>
       </DetailsPokemons>
 
-      <DetailsPokemons title="Ataques">
+      <DetailsPokemons title="Moves">
         <div class="details-content">
-          <p v-for="(move, index) in pokemon_info.attacks" :key="index">
-          {{ move.name}}
+          <p v-for="move in pokemon_info.attacks" :key="move.name">
+          {{ move.name }}
+          
           </p>
         </div>
       </DetailsPokemons>
@@ -51,13 +52,13 @@ export default {
 </script>
 <style>
 .popup-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+
   z-index: 99;
-  background-color: rgba(0, 0, 0, 0.3);
+
   display: flex;
   height: 100%;
   .left-side {

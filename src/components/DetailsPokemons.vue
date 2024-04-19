@@ -19,7 +19,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: white;
+  background-color: #fffefa;
   padding: .5rem;
   border-radius: 6px;
   gap: 6px;
@@ -58,6 +58,15 @@ export default {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    div {
+      img {
+        transition: all 200ms ease-in-out;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
   }
 }
 </style>
