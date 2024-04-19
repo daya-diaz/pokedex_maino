@@ -236,6 +236,7 @@ export default {
       transition: all 300ms ease-in-out;
     }
     .popup_div_container {
+      z-index: 61;
       display: flex;
       width: 100vw;
       height: 100vh;

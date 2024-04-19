@@ -1,6 +1,6 @@
 <template>
   <header>
-    <img src="../assets/pokemon-logo.png" alt="" />
+    <a href="#"><img src="../assets/pokemon-logo.png" alt="" /></a>
     <nav>
       <ul>
         <li><a href="#">Pokédex</a></li>
@@ -19,6 +19,8 @@ export default {
 
 <style scoped>
 header {
+  position: fixed;
+  z-index: 60;
   background-color: #F5DB13;
   color: #212121;
   display: flex;
@@ -32,6 +34,10 @@ header {
   @media (max-width: 768px) {
     padding-inline: 1rem; 
   }
+  a {
+    outline: none;
+    border: none;
+  }
 
   nav {
     ul {
@@ -41,9 +47,14 @@ header {
 
       li {
         margin-right: 1rem;
+        transition: all 200ms ease-in-out;
+        border: 2px solid transparent;
 
         &:last-child {
           margin-right: 0; 
+        }
+        &:hover {
+          border-bottom: 2px solid #212121;
         }
 
         a {
