@@ -23,8 +23,7 @@ export default {
   padding: .5rem;
   border-radius: 6px;
   gap: 6px;
-
-
+  
   span {
     font-size: 1rem; 
     color: black;

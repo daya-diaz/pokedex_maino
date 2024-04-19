@@ -29,6 +29,7 @@
           <img :src="pokemon.imgSrc" alt="" />
         </div>
       </button>
+
       <div class="popup_div_container" v-if="showModal" @click="closePopup">
         <PokemonPopup :pokemon_info="selected_pokemon"></PokemonPopup>
       </div>
@@ -76,7 +77,6 @@ export default {
 
             };
           });
-          {{console.log(res.data.moves)}}
         });
       });
     });

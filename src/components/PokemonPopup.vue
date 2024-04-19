@@ -53,6 +53,7 @@ export default {
 <style>
 .popup-container {
   position: fixed;
+  display: flex;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -25%);
@@ -61,6 +62,27 @@ export default {
 
   display: flex;
   height: 100%;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    top: 40%;
+
+    .left-side {
+      width: 100%;
+      border-bottom-left-radius: 0px !important;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+
+    }
+    .right-side {
+      max-width: 320px !important;
+      border-top-right-radius: 0px !important;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+  }
+
   .left-side {
     width: 320px;
     height: 320px;
@@ -82,11 +104,10 @@ export default {
     height: 320px;
     overflow: auto;
 
-
     display: flex;
     flex-direction: column;
     gap: 12px;
-    width: 430px;
+    max-width: 430px;
     padding: 1rem 1rem;
     background-color: #c3ad06;
     border-top-right-radius: 12px;
