@@ -33,6 +33,7 @@
       <div class="popup_div_container" v-if="showModal" @click="closePopup">
         <PokemonPopup :pokemon_info="selected_pokemon"></PokemonPopup>
       </div>
+      {{  console.log(pokemons) }}
     </main>
   </div>
 </template>
@@ -66,6 +67,10 @@ export default {
           pokemon.abilities = res.data.abilities;
           pokemon.sprites = res.data.sprites;
           pokemon.gameIndices = res.data.game_indices;
+          pokemon.species = res.data.species.name;
+          pokemon.types = res.data.types;
+
+          
           pokemon.attacks = res.data.moves.map(move => {
             return {
               name: move.move.name,
@@ -76,11 +81,13 @@ export default {
       });
     });
   },
-
   computed: {
     filteredPokemons() {
       return this.pokemons.filter((item) => {
-        return item.name.toLowerCase().includes(this.search.toLowerCase()) || item.id.toString().includes(this.search)
+        return item.name.toLowerCase().includes(this.search.toLowerCase()) 
+          || item.id.toString().includes(this.search) 
+          || item.species.toLowerCase().includes(this.search.toLowerCase())
+          || item.types.some(type => type.type.name.toLowerCase().includes(this.search.toLowerCase()))
       })
     }
   },
@@ -96,8 +103,6 @@ export default {
     }
   },
 }
-
-
 </script>
 
 <style>
