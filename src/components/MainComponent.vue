@@ -57,7 +57,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=10").then((response) => {
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=300").then((response) => {
       this.pokemons = response.data.results;
 
       this.pokemons.forEach(pokemon => {
