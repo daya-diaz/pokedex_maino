@@ -35,6 +35,10 @@
         </div>
       </DetailsPokemons>
     </div>
+    <button class="close-popup" @click="closePopup">
+      <img src="../assets/close-icon.png"
+        alt="Botão com fundo branco e um 'X' na cor preta, sua funcionalidade é fechar o Popup do Pokémon.">
+    </button>
   </div>
 </template>
 <script>
@@ -43,10 +47,24 @@ import DetailsPokemons from './DetailsPokemons.vue';
 export default {
   name: 'PokemonPopup',
   props: {
-    pokemon_info: []
+    pokemon_info: [],
+    closePopup: Function
   },
   components: {
     DetailsPokemons
+  },
+  methods: {
+    closePopupOnOutsideClick(event) {
+      if (!this.$el.contains(event.target)) {
+        this.closePopup();
+      }
+    },
+    mounted() {
+      window.addEventListener('click', this.closePopupOnOutsideClick);
+    },
+    beforeUnmount() {
+      window.removeEventListener('click', this.closePopupOnOutsideClick);
+    }
   },
 }
 </script>
@@ -80,6 +98,32 @@ export default {
       border-bottom-left-radius: 0px !important;
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
+    }
+  }
+
+  .close-popup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    right: -15px;
+    top: -15px;
+
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+
+    background-color: white;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+
+    &:hover {
+      background-color: #f8f4cf;
+    }
+
+    img {
+      width: 24px;
     }
   }
 
