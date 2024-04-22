@@ -34,6 +34,7 @@
         <PokemonPopup :pokemon_info="selected_pokemon"></PokemonPopup>
       </div>
     </main>
+    {{ pokemons[0] }}
   </div>
 </template>
 
@@ -57,7 +58,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=300").then((response) => {
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=30").then((response) => {
       this.pokemons = response.data.results;
 
       this.pokemons.forEach(pokemon => {
@@ -85,7 +86,7 @@ export default {
   computed: {
     filteredPokemons() {
       return this.pokemons.filter((item) => {
-        return item.name.toLowerCase().includes(this.search.toLowerCase())
+        return item.name.toLowerCase().includes(this.search.toLowerCase()) || item.id.toString().includes(this.search) 
       })
     }
   },

@@ -16,7 +16,7 @@ Pokédex desenvolvida em Vue.js como parte do desafio técnico para a vaga de Es
 
 Primeiro, muito obrigada pela oportunidade de ter chegado a esse momento da seleção! Encontrei algumas dificuldades no caminho, como nunca havia trabalhado com Vue.js demorei um pouco mais para conseguir me adaptar, mas até que gostei desse framework! :D
 
-Infelizmente, não consegui desenvolver a funcionalidade de filtro para id, tipo e espécie e nem consegui implementar o suporte aos idiomas disponíveis da API.
+Infelizmente, não consegui desenvolver a funcionalidade de filtro para tipo e espécie e nem consegui implementar o suporte aos idiomas disponíveis da API.
 
 Fora esses detalhes, que irei sem dúvidas dedicar um tempo para me aprofundar, entender como funciona e trabalhar nisso, o resto do projeto foi muito legal de fazer.
 
