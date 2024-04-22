@@ -67,19 +67,18 @@ export default {
     display: flex;
     flex-direction: column;
     top: 40%;
-
-    .left-side {
-      width: 100%;
-      border-bottom-left-radius: 0px !important;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-
-    }
+    
     .right-side {
-      max-width: 320px !important;
+      width: 340px !important;
       border-top-right-radius: 0px !important;
       border-bottom-left-radius: 12px;
       border-bottom-right-radius: 12px;
+    }
+    .left-side {
+      width: 340px !important;
+      border-bottom-left-radius: 0px !important;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
     }
   }
 

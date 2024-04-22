@@ -57,7 +57,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=20").then((response) => {
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=300").then((response) => {
       this.pokemons = response.data.results;
 
       this.pokemons.forEach(pokemon => {
@@ -115,11 +115,15 @@ export default {
   align-items: center;
   gap: 3rem;
 
-  padding: 3rem 13rem;
+  padding: 10rem 13rem;
 
   h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 500;
     width: 100%;
+    text-align: center;
     color: #000;
     text-align: center;
     letter-spacing: 3px;
@@ -127,9 +131,12 @@ export default {
 
   form {
     width: 100%;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     input {
       height: 3.3rem;
+      min-width: 340px;
       width: 100%;
       background-color: #F2F2F2;
       border: 1px solid #ab9700;
