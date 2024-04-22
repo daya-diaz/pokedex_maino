@@ -3,8 +3,8 @@ import { createI18n } from 'vue-i18n'
 import './style.css'
 import App from './App.vue'
 
-import {pt_BR} from '../src/locales/pt_BR.ts'
-import {en} from '../src/locales/en.ts'
+import { pt_BR } from '../src/locales/pt_BR.ts'
+import { en } from '../src/locales/en.ts'
 import { es } from './locales/es.ts'
 
 const languages = {

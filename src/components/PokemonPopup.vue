@@ -22,15 +22,15 @@
       <DetailsPokemons :title="$t('popup.gameIndices')">
         <div class="details-content">
           <p v-for="(gameIndexPokemon, index) in pokemon_info.gameIndices" :key="index">
-          {{ gameIndexPokemon.version.name }}</p>
+            {{ gameIndexPokemon.version.name }}</p>
         </div>
       </DetailsPokemons>
 
       <DetailsPokemons :title="$t('popup.moves')">
         <div class="details-content">
           <p v-for="move in pokemon_info.attacks" :key="move.name">
-          {{ move.name }}
-          
+            {{ move.name }}
+
           </p>
         </div>
       </DetailsPokemons>
@@ -67,13 +67,14 @@ export default {
     display: flex;
     flex-direction: column;
     top: 40%;
-    
+
     .right-side {
       width: 340px !important;
       border-top-right-radius: 0px !important;
       border-bottom-left-radius: 12px;
       border-bottom-right-radius: 12px;
     }
+
     .left-side {
       width: 340px !important;
       border-bottom-left-radius: 0px !important;

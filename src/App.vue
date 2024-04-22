@@ -15,9 +15,6 @@ export default {
     Header,
     MainComponent
   },
-  data: () => ({
-    //
-  }),
 };
 </script>
 
@@ -26,12 +23,9 @@ export default {
   position: relative;
 
   -webkit-font-smoothing: antialiased;
-  background: linear-gradient(
-    to bottom right,
-    rgb(231, 254, 254),
-    rgba(245, 245, 245, 1)
-  )
-  no-repeat center center fixed !important;
+  background: linear-gradient(to bottom right,
+      rgb(231, 254, 254),
+      rgba(245, 245, 245, 1)) no-repeat center center fixed !important;
   min-height: 100vh;
   height: 100%;
 }

@@ -1,8 +1,8 @@
 <template>
-<div class="details-container">
-  <span>{{title}}</span>
-  <slot></slot>
-</div>
+  <div class="details-container">
+    <span>{{ title }}</span>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
@@ -23,9 +23,9 @@ export default {
   padding: .5rem;
   border-radius: 6px;
   gap: 6px;
-  
+
   span {
-    font-size: 1rem; 
+    font-size: 1rem;
     color: black;
     width: 100%;
     font-weight: 500;
@@ -39,6 +39,7 @@ export default {
     p {
       color: #4E4E4E;
       position: relative;
+
       &::after {
         content: '';
         width: 6px;
@@ -46,13 +47,14 @@ export default {
         background-color: #F5DB13;
         border-radius: 50%;
         position: absolute;
-        top: 40%; 
+        top: 40%;
         right: -14px;
       }
 
     }
-    
+
   }
+
   #sprites-content {
     display: flex;
     justify-content: space-between;
@@ -61,6 +63,7 @@ export default {
     div {
       img {
         transition: all 200ms ease-in-out;
+
         &:hover {
           transform: scale(1.1);
         }

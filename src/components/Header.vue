@@ -26,14 +26,15 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 13rem; 
+  padding-inline: 13rem;
   padding-block: 1rem;
-  width: 100%; 
+  width: 100%;
   filter: drop-shadow(0px 3px 8px #cccccc);
 
   @media (max-width: 768px) {
-    padding-inline: 1rem; 
+    padding-inline: 1rem;
   }
+
   a {
     outline: none;
     border: none;
@@ -51,8 +52,9 @@ header {
         border: 2px solid transparent;
 
         &:last-child {
-          margin-right: 0; 
+          margin-right: 0;
         }
+
         &:hover {
           border-bottom: 2px solid #212121;
         }
@@ -70,5 +72,4 @@ header {
     }
   }
 }
-
 </style>

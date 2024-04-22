@@ -2,7 +2,7 @@
   <div class="main_section">
     <h1>{{ $t('home.title') }}</h1>
     <form class="form_input">
-      <input type="text" :placeholder="$t('home.searchPlaceholder')"  v-model="search" @input="filterPokemons">
+      <input type="text" :placeholder="$t('home.searchPlaceholder')" v-model="search" @input="filterPokemons">
     </form>
     <main class="main_container">
       <button class="card_container" v-for="(pokemon, index) in filteredPokemons" @click="sendInfo(pokemon)">
@@ -39,13 +39,11 @@
 
 <script>
 import axios from 'axios';
-import PokemonCard from './PokemonCard.vue';
 import PokemonPopup from './PokemonPopup.vue';
 
 export default {
   name: 'MainComponent',
   components: {
-    PokemonCard,
     PokemonPopup
   },
   data() {
@@ -57,9 +55,8 @@ export default {
     }
   },
   mounted() {
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=300").then((response) => {
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=10").then((response) => {
       this.pokemons = response.data.results;
-
       this.pokemons.forEach(pokemon => {
         axios.get(pokemon.url).then(res => {
           pokemon.id = res.data.id;
@@ -73,8 +70,6 @@ export default {
             return {
               name: move.move.name,
               level_learned: move.version_group_details.map((level) => level.level_learned_at)
-
-
             };
           });
         });
@@ -85,14 +80,11 @@ export default {
   computed: {
     filteredPokemons() {
       return this.pokemons.filter((item) => {
-        return item.name.toLowerCase().includes(this.search.toLowerCase()) || item.id.toString().includes(this.search) 
+        return item.name.toLowerCase().includes(this.search.toLowerCase()) || item.id.toString().includes(this.search)
       })
     }
   },
   methods: {
-    getId(pokemon) {
-      return Number(pokemon.url.split("/")[6]);
-    },
     sendInfo(pokemon_info) {
       this.selected_pokemon = pokemon_info;
       this.showModal = true;
@@ -134,6 +126,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+
     input {
       height: 3.3rem;
       min-width: 340px;
@@ -238,10 +231,12 @@ export default {
         }
       }
     }
+
     .card_container:hover .right_side img {
       transform: scale(1.2);
       transition: all 300ms ease-in-out;
     }
+
     .popup_div_container {
       z-index: 61;
       display: flex;
